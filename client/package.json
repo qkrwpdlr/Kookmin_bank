@@ -19,7 +19,9 @@
     "svelte-material-ui": "^1.0.0"
   },
   "dependencies": {
+    "lottie-web": "^5.7.4",
     "sirv-cli": "^1.0.0",
-    "svelte-preprocess": "^4.5.2"
+    "svelte-preprocess": "^4.5.2",
+    "svelte-spa-router": "^3.0.5"
   }
 }
