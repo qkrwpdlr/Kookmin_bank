@@ -18,23 +18,23 @@ export default [
                     {
                         title: "김",
                         unit: 0,
-                        price: 0.1
+                        price: 2
                     }, {
                         title: "밥",
                         unit: 1,
-                        price: 1.1
+                        price: 34
                     }, {
                         title: "굴비1",
                         unit: 1,
-                        price: 1
+                        price: 51
                     }, {
                         title: "굴비2",
                         unit: 1,
-                        price: 2
+                        price: 23
                     }, {
                         title: "굴비3",
                         unit: 1,
-                        price: 3
+                        price: 32
                     },
                 ]
             }, {
