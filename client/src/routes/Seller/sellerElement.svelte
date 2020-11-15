@@ -16,6 +16,9 @@
             price: -info.price,
         });
     };
+    let isDone = false;
+    let rotate = 0;
+    let step = 0;
 </script>
 
 <style>
@@ -39,8 +42,9 @@
 
     .element__root {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
+        width: 100%;
     }
     .count__unit {
         margin-left: 5px;
@@ -54,15 +58,53 @@
         transition: background-color 0.2s;
         border-radius: 3px;
     }
+    .key {
+        width: 16px;
+        margin-right: 10px;
+    }
+    .element__price_info {
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+    }
 </style>
 
 <div class="element__root">
-    <div>
-        {info.title}
-        :
-        {info.price}
-        /
-        {#if info.unit === 0}개{:else}100g{/if}
+    <div class="element__price_info">
+        {#if step === 0}
+            <img
+                alt=""
+                src="/assets/icon/key.svg"
+                class="key"
+                style={`transform: rotate(${rotate}deg);will-change: transform;`}
+                on:click={() => {
+                    const animation = () => {
+                        if (isDone) {
+                            step = 2;
+                            return;
+                        }
+                        rotate += 42;
+                        requestAnimationFrame(animation);
+                    };
+                    setTimeout(()=>{
+                        isDone = true
+                    },1000)
+                    animation();
+                }} />
+        {:else if step === 1}
+            <img src="/assets/icon/key.svg" alt="" class="key" />
+        {:else if step === 2}
+            <img src="/assets/icon/locked.svg" alt="" class="key" />
+        {:else if step === 3}
+            <img src="/assets/icon/unlock.svg" alt="" class="key" />
+        {/if}
+        <span>
+            {info.title}
+            :
+            {info.price}
+            /
+            {#if info.unit === 0}개{:else}100g{/if}
+        </span>
     </div>
     <div class="count__root">
         <div class="button" on:click={increase}>+</div>
