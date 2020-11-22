@@ -3,10 +3,13 @@
   import Element from "./sellerElement.svelte";
   import Qr from "./QrModal.svelte";
   import { getQRUrl } from "./../../http/getQRUrl";
+  import { getMenu } from "./../../http/getMenu";
+import { onMount } from "svelte";
   export let params = {};
   let seller;
   let price = 0;
   let url = "";
+  let content = []
   $: {
     const { id, sid } = params;
     seller = marketContent
@@ -19,6 +22,10 @@
     url = await getQRUrl();
     isModal = true;
   };
+  onMount(async ()=>{
+    const {rows} = await getMenu()
+    content = rows
+  })
   $: isActive = price === 0;
 </script>
 
@@ -34,6 +41,7 @@
     width: 90%;
     padding: 5%;
     height: 90%;
+    overflow: scroll;
   }
   .seller__bottom {
     background-color: rgb(255, 188, 0);
@@ -114,7 +122,7 @@
 
 <div class="seller__root">
   <div class="seller_element__wrap">
-    {#each seller.content as good}
+    {#each content as good}
       <Element
         info={good}
         on:change={({ detail }) => {

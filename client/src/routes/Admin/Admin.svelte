@@ -11,6 +11,9 @@
     codeReader
       .decodeOnceFromVideoDevice(undefined, "video")
       .then((result) => {
+        // fetch(`http://localhost:3000${result.url}`, {
+        //   method: "GET",
+        // });
         isFind = true;
         console.log(result.text);
       })
