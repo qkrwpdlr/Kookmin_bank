@@ -1,67 +1,67 @@
 export default [
     {
         id: 1,
-        title: "무슨시장1",
-        lottie: "1.json"
+        title: "도깨비시장",
+        lottie: "5.json"
     }, {
         id: 2,
-        title: "무슨시장2",
-        lottie: "3.json"
+        title: "창동산창시장",
+        lottie: "6.json"
     }, {
         id: 3,
-        title: "무슨시장3",
-        lottie: "2.json"
+        title: "수유재래시장",
+        lottie: "7.json"
     }, {
         id: 4,
-        title: "무슨시장4",
-        lottie: "4.json"
+        title: "수유재래시장",
+        lottie: "8.json"
     }, {
         id: 5,
-        title: "무슨시장5",
-        lottie: "2.json"
+        title: "돈암제일시장",
+        lottie: "9.json"
     }, {
         id: 6,
-        title: "무슨시장6",
+        title: "광장시장",
         lottie: "1.json"
     }, {
         id: 7,
-        title: "무슨시장7",
-        lottie: "4.json"
+        title: "동묘벼룩시장",
+        lottie: "10.json"
     }, {
         id: 8,
-        title: "무슨시장1",
-        lottie: "3.json"
+        title: "평화시장",
+        lottie: "11.json"
     }, {
         id: 9,
-        title: "무슨시장2",
-        lottie: "2.json"
+        title: "신당중앙시장",
+        lottie: "12.json"
     }, {
         id: 10,
-        title: "무슨시장3",
-        lottie: "2.json"
+        title: "남대문시장",
+        lottie: "13.json"
     }, {
         id: 11,
-        title: "무슨시장4",
-        lottie: "4.json"
+        title: "방탄시장",
+        lottie: "14.json"
     }, {
         id: 12,
-        title: "무슨시장5",
-        lottie: "3.json"
+        title: "용문시장",
+        lottie: "15.json"
     }, {
         id: 13,
-        title: "무슨시장6",
+        title: "강남시장",
         lottie: "1.json"
     }, {
         id: 14,
-        title: "무슨시장7",
+        title: "강남시장",
         lottie: "3.json"
     }, {
         id: 15,
-        title: "무슨시장7",
+        title: "새마을시장",
         lottie: "3.json"
     }, {
         id: 16,
-        title: "무슨시장7",
+        title: "새마을시장",
         lottie: "4.json"
     }, {
         id: 17,

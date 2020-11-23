@@ -1,9 +1,14 @@
 <script>
   import { createEventDispatcher } from "svelte";
+  import { tweened } from "svelte/motion";
   import { valid } from "./../../http/getVarified";
   const dispatch = new createEventDispatcher();
   let count = 0;
   export let info;
+  let step = 0;
+  const angle = tweened(0, {
+    duration: 500,
+  });
   const increase = () => {
     count += 1;
     dispatch("change", {
@@ -19,7 +24,6 @@
   };
   let isDone = false;
   let rotate = 0;
-  let step = 0;
 </script>
 
 <style>
@@ -77,26 +81,18 @@
         alt=""
         src="/assets/icon/key.svg"
         class="key"
-        style={`transform: rotate(${rotate}deg);will-change: transform;`}
-        on:click={() => {
-          valid(info.hashText).then(({ result }) => {
+        style={`transform: rotate(${$angle}deg);will-change: transform;`}
+        on:click={async () => {
+          valid(info.hashText).then(async ({ result }) => {
             if (info.name === JSON.parse(result).title && JSON.parse(result).price === info.price) {
-            } else {
-              alert('error');
-            }
-          });
-          const animation = () => {
-            if (isDone) {
+              await angle.set(1200);
               step = 2;
+            } else {
+              await angle.set(1200);
+              step = 3;
               return;
             }
-            rotate += 42;
-            requestAnimationFrame(animation);
-          };
-          setTimeout(() => {
-            isDone = true;
-          }, 1000);
-          animation();
+          });
         }} />
     {:else if step === 1}
       <img src="/assets/icon/key.svg" alt="" class="key" />

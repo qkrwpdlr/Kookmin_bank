@@ -4,12 +4,12 @@
   import Qr from "./QrModal.svelte";
   import { getQRUrl } from "./../../http/getQRUrl";
   import { getMenu } from "./../../http/getMenu";
-import { onMount } from "svelte";
+  import { onMount } from "svelte";
   export let params = {};
   let seller;
   let price = 0;
   let url = "";
-  let content = []
+  let content = [];
   $: {
     const { id, sid } = params;
     seller = marketContent
@@ -19,13 +19,13 @@ import { onMount } from "svelte";
   let isModal = false;
   const buy = async () => {
     if (isActive) return;
-    url = await getQRUrl();
+    url = await getQRUrl(price);
     isModal = true;
   };
-  onMount(async ()=>{
-    const {rows} = await getMenu()
-    content = rows
-  })
+  onMount(async () => {
+    const { rows } = await getMenu();
+    content = rows;
+  });
   $: isActive = price === 0;
 </script>
 

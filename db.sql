@@ -24,4 +24,5 @@ insert into menu(name,price,seller_id) values("고기7",2,1);
 insert into menu(name,price,seller_id) values("고기8",4,1);
 insert into menu(name,price,seller_id) values("고기9",11,1);
 
+update menu set price=0 name="감자"
 

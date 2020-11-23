@@ -1,19 +1,30 @@
 <script>
   import { BrowserQRCodeReader } from "@zxing/library";
   import lottie from "lottie-web";
-
+  import { onMount } from "svelte";
+  import { push } from "svelte-spa-router";
+  onMount(() => {
+    lottie.loadAnimation({
+      container: mainElem, // the dom element that will contain the animation
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      path: `assets/lotties/mart.json`, // the path to the animation json
+    });
+  });
   let isVideo = false;
   let isFind = false;
   let element;
+  let mainElem;
   const click = async () => {
     const codeReader = new BrowserQRCodeReader();
     isVideo = true;
     codeReader
       .decodeOnceFromVideoDevice(undefined, "video")
       .then((result) => {
-        // fetch(`http://localhost:3000${result.url}`, {
-        //   method: "GET",
-        // });
+        fetch(`http://localhost:3000${result.url}`, {
+          method: "GET",
+        });
         isFind = true;
         console.log(result.text);
       })
@@ -38,10 +49,7 @@
   .pay {
     width: 100vw;
     height: 50vh;
-    background-color: yellow;
-  }
-  .pay:hover {
-    background-color: red;
+    background-color: rgb(253, 185, 19);
   }
   .video__wrap {
     width: 100vw;
@@ -165,6 +173,17 @@
       transform: translateX(-8px);
     }
   }
+  .button__root {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .button__root div {
+    padding: 15px;
+    border-radius: 3px;
+    background-color: white;
+    border: 1px solid black;
+  }
 </style>
 
 {#if isVideo}
@@ -182,6 +201,15 @@
       </div>
     {/if}
   </div>
+{:else}
+  <div class="pay" bind:this={mainElem} />
+  <div class="pay button__root">
+    <div on:click={click}>정산하기</div>
+    <div
+      on:click={() => {
+        push('/Regist');
+      }}>
+      등록하기
+    </div>
+  </div>
 {/if}
-<div class="pay" on:click={click}>정산하기</div>
-<div class="pay">등록하기</div>

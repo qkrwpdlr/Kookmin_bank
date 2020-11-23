@@ -21,14 +21,12 @@ router.get("/create", function (req, res) {
   const fs = require("fs");
   const bytecode = fs.readFileSync("./back_sol_Bank.bin"); // 컴파일된 출력
 
-  const constructorType = ["string"]; // 적절한 생성자 타입을 입력하세요.
-  const constructorValue = ["Hello, Klaytn!"];
   caver.klay
     .sendTransaction({
       type: "SMART_CONTRACT_DEPLOY",
       from: caver.klay.accounts.wallet[0].address,
       gas: "5000000",
-      value: caver.utils.toPeb("1", "mKLAY"),
+      value: caver.utils.toPeb(Number(req.query.price), "mKLAY"),
       data: bytecode.toString(),
     })
     .then(function (receipt) {

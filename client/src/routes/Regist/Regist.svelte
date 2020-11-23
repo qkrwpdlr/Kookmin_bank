@@ -29,7 +29,7 @@
   .money {
     display: inline-block;
     height: 20px;
-    width: 40px;
+    width: 60px;
     padding: 5px;
   }
   .up {
@@ -54,7 +54,7 @@
         on:click={() => {
           unit === 0 ? (unit = 1) : (unit = 0);
         }}>
-        {#if unit === 0}g/원{:else}개/원{/if}
+        {#if unit === 0}100g/원{:else}개/원{/if}
       </div>
     </div>
     <div class="up" on:click={upload}>올리기</div>
