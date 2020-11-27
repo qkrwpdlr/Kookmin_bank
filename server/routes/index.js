@@ -39,7 +39,7 @@ router.get("/create", function (req, res) {
 router.get("/getMoney", function (req, res) {
   const caver = new Caver("https://api.baobab.klaytn.net:8651");
   const walletInstance = caver.klay.accounts.privateKeyToAccount(
-    data[req.query.key]
+    data["0xa35f6ef18ae324ab95df55963a90bb84937c4480"]
   );
   caver.klay.accounts.wallet.add(walletInstance);
 

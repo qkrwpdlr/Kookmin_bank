@@ -73,7 +73,7 @@
 
 <div class="main__root">
     <div class="main__Logo text-focus-in">
-        <div>당신근처의 따듯한 직거래</div>
+        <div>당신근처의 따듯한 시장</div>
     </div>
     <Carousel elements={banner} />
     <div class="main__market">

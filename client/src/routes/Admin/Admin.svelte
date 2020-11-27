@@ -22,8 +22,12 @@
     codeReader
       .decodeOnceFromVideoDevice(undefined, "video")
       .then((result) => {
-        fetch(`http://localhost:3000${result.url}`, {
+        fetch(`${result.text}`, {
           method: "GET",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
         });
         isFind = true;
         console.log(result.text);
@@ -197,7 +201,8 @@
     {:else}
       <div class="success__message shake-horizontal">결제가 완료되었습니다</div>
       <div class="bottom__button">
-        <div on:click={() => backFalse()}>{isFind}</div>
+        <div on:click={() => backFalse()}>뒤로가기
+        </div>
       </div>
     {/if}
   </div>

@@ -1,11 +1,19 @@
 <script>
   import { postMenu } from "./../../http/postMenu";
+  import { fly } from "svelte/transition";
   let unit = 0;
   let title = "";
   let price = 0;
+  let isToast = false;
   const upload = () => {
+    isToast = true;
     postMenu(title, price);
   };
+  $: if (isToast) {
+    setTimeout(() => {
+      isToast = false;
+    }, 1000);
+  }
 </script>
 
 <style>
@@ -41,6 +49,21 @@
     border-radius: 5px;
     background-color: rgb(255, 188, 0);
   }
+  .toast__message {
+    width: 80vw;
+    background-color: rgba(100, 91, 76);
+    opacity: 0.3;
+    color: white;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-bottom: 5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+  }
 </style>
 
 <div class="regist__root">
@@ -59,4 +82,7 @@
     </div>
     <div class="up" on:click={upload}>올리기</div>
   </div>
+  {#if isToast}
+    <div class="toast__message" transition:fly>등록 되었습니다</div>
+  {/if}
 </div>

@@ -7,7 +7,7 @@
     var typeNumber = 0;
     var errorCorrectionLevel = "H";
     var qr = QR(typeNumber, errorCorrectionLevel);
-    qr.addData(`http://localhost${url.url}`);
+    qr.addData(`http://localhost:3000/${url.url}`);
     console.log(url)
     qr.make();
     imgUrl = qr.createDataURL()
